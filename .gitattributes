@@ -1,0 +1,7 @@
+* text=auto
+*.md text eol=lf
+*.pq text eol=lf
+*.dax text eol=lf
+*.sql text eol=lf
+*.png binary
+*.pq linguist-detectable=false

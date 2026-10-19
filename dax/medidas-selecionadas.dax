@@ -1,0 +1,125 @@
+// 25 medidas unificadas selecionadas do projeto histórico.
+// Dependem das medidas por plataforma, tabelas, colunas e relações reservadas.
+// Arquivo para consulta: copie uma expressão por vez no modelo compatível.
+
+uni_Impressões =
+[ad.GrupoC_Linkedin_Impressões]+[cp.Google_Campanhas_Impressões]+[cp.Meta.Campanhas_Impressões]
+
+uni_Custo =
+[cp.Meta.Campanhas_Investimento]+[cp.Google_Campanhas_Custo]+'Mediadas Linkedin'[ad.GrupoC_Linkedin_Custo_Real]
+
+uni_Cliques =
+[cp.Google_Campanhas_Cliques]+[cp.Meta.Campanhas_Clicks]+'Mediadas Linkedin'[ad.GrupoC_Linkedin_Cliques]
+
+uni_Leads =
+[cp.Google_Campanhas_LEADS]+[cp.Meta.Campanhas_LEADS]+[ad.GrupoC_Linkedin_Lead]
+
+uni_MQL =
+[ad.GrupoC_Linkedin_MQL]+[cp.Meta.Campanhas_MQL]+[cp.Google_Campanhas_Google.MQL]
+
+uni_SQL =
+[ad.GrupoC_Linkedin_SQL]+[cp.Google_Campanhas_SQL]+[cp.Meta.Campanhas_Campanhas_SQL]
+
+uni_Oportunidade =
+[ad.GrupoC_Linkedin_Diag. Agendados]+[cp.Google_Campanhas_Diag. Agendados]+[cp.Meta.Campanhas_Diag. Agendados]
+
+uni_Proposta =
+[cp.Meta.Campanhas_Propostas]+[cp.Google_Campanhas_Propostas]+[ad.GrupoC_Linkedin_Propostas]
+
+uni_Fechados =
+[ad.GrupoC_Linkedin_Contratos_Fechados]+[cp.Google_Contratos_Fechados]+[cp.Meta.Campanhas_Contratos_Fechados]
+
+uni_Fechados_R$ =
+[ad.GrupoC_Linkedin_R$_Contratos_Fechados]+[cp.Google_Campanhas_R$_Contratos_Fechados]+[cp.Meta.Campanhas_R$_Contratos_Fechados]
+
+uni_Campanhas_ICP% =
+var google =
+CALCULATE(
+[cp.Google_Campanhas_LEADS],
+hs_Contados_First[Classificação da Empresa]in {"MID","EP","LEP"})+0
+var linkeidn =
+CALCULATE(
+[ad.GrupoC_Linkedin_Lead],
+hs_Contados_First[Classificação da Empresa]in {"MID","EP","LEP"})+0
+var meta =
+CALCULATE(
+[cp.Meta.Campanhas_LEADS],
+hs_Contados_First[Classificação da Empresa]in {"MID","EP","LEP"})+0
+
+var total_icp = google +  linkeidn +  meta
+var total = [cp.Google_Campanhas_LEADS]+[ad.GrupoC_Linkedin_Lead]+[cp.Meta.Campanhas_LEADS]
+
+RETURN
+DIVIDE(total_icp,total,0)
+
+uni_Oportunidade% =
+DIVIDE([uni_Oportunidade],[uni_Leads],0)
+
+uni_CPL =
+DIVIDE([uni_Custo],[uni_Leads],0)
+
+uni_CAC =
+DIVIDE([uni_Custo],[uni_Fechados],0)
+
+uni_TCV =
+VAR GOOGLE =    CALCULATE([Total do Valor do Contrato R$],
+hs_Contados_First[ID Google Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Google Campanha_V2],'tab.Campanhas'[id]))+0
+VAR LINKEDIN =  CALCULATE([Total do Valor do Contrato R$],
+hs_Contados_First[ID Linkedin Grupos de Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Linkedin Grupos de Campanha_V2],'tab.Campanhas'[id]))+0
+VAR META =      CALCULATE([Total do Valor do Contrato R$],
+hs_Contados_First[ID Facebook Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Facebook Campanha_V2],'tab.Campanhas'[id]))+0
+RETURN
+GOOGLE+LINKEDIN+META
+
+uni_ROAS =
+DIVIDE([uni_Fechados_R$],[uni_Custo],0)
+
+uni_Perda =
+var google = CALCULATE(
+[QTD_LEAD_PERDA],
+hs_Contados_First[ID Google Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Google Campanha_V2],'tab.Campanhas'[id]))+0
+
+var meta = CALCULATE(
+[QTD_LEAD_PERDA],
+hs_Contados_First[ID Facebook Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Facebook Campanha_V2],'tab.Campanhas'[id]))+0
+
+var linkedin = CALCULATE(
+[QTD_LEAD_PERDA],
+hs_Contados_First[ID Linkedin Grupos de Campanha_V2]<>BLANK(),
+USERELATIONSHIP(hs_Contados_First[ID Linkedin Grupos de Campanha_V2],'tab.Campanhas'[id]))+0
+
+return
+google + meta + linkedin
+
+ROI =
+DIVIDE(([uni_Fechados_R$]-[uni_Custo]),[uni_Custo],0)
+
+uni_REC =
+[cp.Linkedin_Campanhas_LEADS_RECONVERSÃO]+[cp.Meta_Campanhas_LEADS_RECONVERSÃO]+[cp.Google_Campanhas_LEADS_RECONVERSÃO]
+
+uni_Conversão_Negócios =
+DIVIDE([uni_Fechados],[uni_Leads],0)
+
+uni_CTR =
+DIVIDE([uni_Cliques],[uni_Impressões],0)
+
+uni_EMAIL_Corp_% =
+var corp = [cp.Google_Campanhas_LEADS_Corporativo]+[cp.Meta.Campanhas_LEADS_Corporativo]+[ad.GrupoC_Linkedin_Lead_Corporativo]
+return
+DIVIDE(corp,[uni_Leads],0)
+
+uni_EMAIL_Corp_QTD =
+var corp = [cp.Google_Campanhas_LEADS_Corporativo]+[cp.Meta.Campanhas_LEADS_Corporativo]+[ad.GrupoC_Linkedin_Lead_Corporativo]
+return
+corp
+
+uni_CONVERT_CLIQUE_LEAD =
+DIVIDE([uni_Leads],[uni_Cliques],0)
+
+uni_CPC =
+DIVIDE([uni_Custo],[uni_Cliques],0)

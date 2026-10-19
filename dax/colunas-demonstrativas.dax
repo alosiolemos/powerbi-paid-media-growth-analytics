@@ -1,0 +1,93 @@
+// COLUNAS CALCULADAS — EXEMPLOS ADAPTADOS PARA O PORTFÓLIO.
+// Use uma expressão por vez como nova coluna na tabela Contatos.
+// Tabelas e nomes são didáticos; IDs, regras especiais e listas originais foram omitidos.
+// Requer o esquema descrito em docs/colunas-calculadas.md; não é modelo autônomo.
+
+ID Meta Campanha Exemplo =
+VAR URLInicial = COALESCE(Contatos[URLInicial], "")
+VAR URLWhatsApp = COALESCE(Contatos[URLWhatsApp], "")
+RETURN
+SWITCH(
+    TRUE(),
+    CONTAINSSTRING(URLInicial, "camp_meta_a")
+        || CONTAINSSTRING(URLWhatsApp, "camp_meta_a"), "camp_meta_a",
+    CONTAINSSTRING(URLInicial, "camp_meta_b")
+        || CONTAINSSTRING(URLWhatsApp, "camp_meta_b"), "camp_meta_b",
+    BLANK()
+)
+
+ID Meta Anuncio Exemplo =
+VAR URLInicial = COALESCE(Contatos[URLInicial], "")
+RETURN
+SWITCH(
+    TRUE(),
+    CONTAINSSTRING(URLInicial, "ad_meta_a"), "ad_meta_a",
+    CONTAINSSTRING(URLInicial, "ad_meta_b"), "ad_meta_b",
+    BLANK()
+)
+
+ID Google Campanha Exemplo =
+VAR URLInicial = COALESCE(Contatos[URLInicial], "")
+VAR URLWhatsApp = COALESCE(Contatos[URLWhatsApp], "")
+RETURN
+SWITCH(
+    TRUE(),
+    CONTAINSSTRING(URLInicial, "camp_google_a")
+        || CONTAINSSTRING(URLWhatsApp, "camp_google_a"), "camp_google_a",
+    CONTAINSSTRING(URLInicial, "camp_google_b")
+        || CONTAINSSTRING(URLWhatsApp, "camp_google_b"), "camp_google_b",
+    BLANK()
+)
+
+Plataforma Exemplo =
+SWITCH(
+    TRUE(),
+    NOT ISBLANK(Contatos[ID Google Campanha Exemplo]), "Google",
+    NOT ISBLANK(Contatos[ID Meta Campanha Exemplo]), "Meta",
+    NOT ISBLANK(Contatos[IDLinkedIn]), "LinkedIn",
+    BLANK()
+)
+
+Levantada de Mao Exemplo =
+VAR DatasPresentes =
+    NOT ISBLANK(Contatos[DataConversaoURL])
+        && NOT ISBLANK(Contatos[DataOrigem])
+        && NOT ISBLANK(Contatos[DataFormulario])
+VAR RegraTemporal =
+    DatasPresentes
+        && Contatos[DataConversaoURL] >= Contatos[DataOrigem]
+        && Contatos[DataOrigem] >= Contatos[DataFormulario]
+        && Contatos[Origem] IN {"Levantada de Mão", "Chat", "Telefone passivo", "WhatsApp"}
+VAR ExcecaoCampanha =
+    CONTAINSSTRING(COALESCE(Contatos[URLInicial], ""), "utm_campaign=evento_exemplo")
+VAR CaminhoWhatsApp =
+    NOT ISBLANK(Contatos[DataOrigem])
+        && NOT ISBLANK(Contatos[DataFormulario])
+        && Contatos[DataOrigem] >= Contatos[DataFormulario]
+        && NOT ISBLANK(Contatos[URLWhatsApp])
+        && ISBLANK(Contatos[URLInicial])
+RETURN
+IF(RegraTemporal || ExcecaoCampanha || CaminhoWhatsApp, "Sim", "Não")
+
+Data Assinatura Exemplo =
+VAR ContatoAtual = Contatos[ID]
+VAR DataBase = Contatos[DataFormulario]
+VAR DataFormulario =
+    IF(
+        NOT ISBLANK(DataBase),
+        DATE(YEAR(DataBase), MONTH(DataBase), DAY(DataBase))
+    )
+RETURN
+IF(
+    ISBLANK(ContatoAtual) || ISBLANK(DataFormulario),
+    BLANK(),
+    CALCULATE(
+        MAX(Negocios[DataAssinatura]),
+        FILTER(
+            ALL(Negocios),
+            Negocios[ContatoID] = ContatoAtual
+                && Negocios[Pipeline] = "pipeline_exemplo"
+                && Negocios[DataCriacao] >= DataFormulario
+        )
+    )
+)
