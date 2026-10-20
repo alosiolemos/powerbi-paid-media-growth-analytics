@@ -43,7 +43,7 @@ O inventário identificou **7 páginas, 246 medidas DAX e 64 relacionamentos**. 
 
 ## Evolução relatada no uso do painel
 
-Segundo o autor, as análises apoiaram revisões de campanhas e decisões de investimento, junto das ações do time.
+Utilizei as análises para apoiar revisões de campanhas e decisões de investimento, em conjunto com as ações do time.
 
 | Recorte informado | Indicador |
 | --- | --- |
@@ -53,7 +53,7 @@ Segundo o autor, as análises apoiaram revisões de campanhas e decisões de inv
 | Fechamentos em 2023 | 14 contratos e aproximadamente R$ 33 mil de MRR |
 | Fechamentos em 2024 | 10 contratos e aproximadamente R$ 47 mil de MRR |
 
-Os CPLs aparecem nas capturas fornecidas; os anos foram informados pelo autor. Contratos e MRR anuais são dados relatados e ainda não conciliados com a fonte. O CPL de janeiro não é média anual. A comparação de fechamentos indica maior MRR relatado com menos contratos.
+Os CPLs aparecem nas capturas do meu painel, com os períodos identificados a partir da minha experiência no projeto. Os números anuais de contratos e MRR refletem meu acompanhamento operacional e ainda não foram conciliados com a fonte nesta publicação. O CPL de janeiro não é média anual. A comparação de fechamentos indica maior MRR relatado com menos contratos.
 
 Consulte [contexto e evidências](docs/contexto-resultados.md) para detalhes de ICP, evolução e limites de comparação. Não foi isolado um efeito causal do painel.
 
@@ -73,7 +73,7 @@ Consulte [contexto e evidências](docs/contexto-resultados.md) para detalhes de 
 
 ## Contribuição e aprendizado
 
-O autor descreve este projeto como um dos mais desafiadores de sua trajetória: aprendizado de BigQuery, organização de dados históricos, integração de plataformas, reconstrução de chaves e regras para reduzir a necessidade de conferência manual pelo marketing.
+Este foi um dos projetos mais desafiadores da minha trajetória. Aprendi a utilizar BigQuery, organizei dados históricos, integrei plataformas e reconstruí chaves e regras para reduzir a necessidade de conferência manual pelo marketing.
 
 O painel foi descontinuado em 2025 em função de uma fusão, conforme seu relato. Não foi medido nesta edição o número de horas poupadas ou o ganho de acurácia.
 
