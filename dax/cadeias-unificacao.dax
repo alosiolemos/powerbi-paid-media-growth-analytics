@@ -1,0 +1,67 @@
+// Cadeias de MQL e propostas: 11 expressões do projeto, incluindo duas unificadas já publicadas.
+// Pipeline privado substituído por <PIPELINE_EXEMPLO>.
+// Copie uma medida por vez; requer tabelas, colunas e relações do modelo reservado.
+
+QTD_LEAD =
+CALCULATE(
+    DISTINCTCOUNT(hs_Contados_First[vid]),
+    hs_Contados_First[Validação - erro 3-07-24]="Não",
+    hs_Contados_First[Lev.Mão | Enviou forms durante a visita?]="Sim",
+    USERELATIONSHIP(dCalendario[Date],hs_Contados_First[Data de Envio de Formulário]))
+
+QTD_MQL =
+CALCULATE(
+    [QTD_LEAD],
+    hs_Contados_First[Data que virou MQL]<>BLANK(),
+    USERELATIONSHIP(dCalendario[Date],hs_Contados_First[Data de Envio de Formulário]))+0
+
+Proposta Apresentada =
+CALCULATE(
+    DISTINCTCOUNT('hs_Negócios_Contatos'[id]),
+    'hs_Negócios_Contatos'[pipeline]="<PIPELINE_EXEMPLO>",
+    hs_Contados_First[Data que virou MQL]<>BLANK(),
+    hs_Contados_First[Data que virou SQL]<>BLANK(),
+    hs_Contados_First[Data de Agendamento]<>BLANK(),
+    hs_Contados_First[Data da Proposta]<>BLANK(),
+    hs_Contados_First[Lev.Mão | Enviou forms durante a visita?]="Sim",
+    USERELATIONSHIP(dCalendario[Date],'hs_Negócios_Contatos'[createdate]),
+    USERELATIONSHIP('hs_Negócios_Contatos'[contact.id],hs_Contados_First[vid]))+0
+
+ad.GrupoC_Linkedin_MQL =
+CALCULATE([QTD_MQL],
+    hs_Contados_First[ID Linkedin Grupos de Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Linkedin Grupos de Campanha_V2],'tab.Campanhas'[id]))+0
+
+cp.Meta.Campanhas_MQL =
+CALCULATE(
+    [QTD_MQL],
+    hs_Contados_First[ID Facebook Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Facebook Campanha_V2],'tab.Campanhas'[id]))+0
+
+cp.Google_Campanhas_Google.MQL =
+CALCULATE(
+    [QTD_MQL],
+    hs_Contados_First[ID Google Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Google Campanha_V2],'tab.Campanhas'[id]))+0
+
+ad.GrupoC_Linkedin_Propostas =
+CALCULATE('Medidas Gr oportunidade'[Proposta Apresentada],
+    hs_Contados_First[ID Linkedin Grupos de Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Linkedin Grupos de Campanha_V2],'tab.Campanhas'[id]))+0
+
+cp.Meta.Campanhas_Propostas =
+CALCULATE([Proposta Apresentada],
+    hs_Contados_First[ID Facebook Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Facebook Campanha_V2],'tab.Campanhas'[id]))+0
+
+cp.Google_Campanhas_Propostas =
+CALCULATE(
+    [Proposta Apresentada],
+    hs_Contados_First[ID Google Campanha_V2]<>BLANK(),
+    USERELATIONSHIP(hs_Contados_First[ID Google Campanha_V2],'tab.Campanhas'[id]))+0
+
+uni_MQL =
+[ad.GrupoC_Linkedin_MQL]+[cp.Meta.Campanhas_MQL]+[cp.Google_Campanhas_Google.MQL]
+
+uni_Proposta =
+[cp.Meta.Campanhas_Propostas]+[cp.Google_Campanhas_Propostas]+[ad.GrupoC_Linkedin_Propostas]

@@ -32,6 +32,10 @@ Os exemplos são expressões unificadas do projeto, com apresentação organizad
 | `uni_CONVERT_CLIQUE_LEAD` | Leads divididos por cliques. |
 | `uni_CPC` | Custo dividido por cliques. |
 
+## Como os indicadores se tornam uma visão unificada
+
+A camada unificada depende de medidas-base e de medidas por plataforma. O [passo a passo de MQL e propostas](unificacao-medidas.md) mostra a definição comercial, os vínculos de campanha selecionados com USERELATIONSHIP e a soma final. Consulte também o [código dessas cadeias](../dax/cadeias-unificacao.dax).
+
 ## A cadeia até o lead elegível
 
 A medida-base QTD_LEAD faz contagem distinta do identificador do contato, exige uma classificação de validação igual a Não e levantada de mão igual a Sim, utilizando o relacionamento com a data de envio do formulário.

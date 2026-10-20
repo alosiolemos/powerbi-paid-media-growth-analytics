@@ -1,5 +1,12 @@
 # Histórico de alterações
 
+## 0.2.0 — 2026-10-19
+
+- Detalhamento das cadeias de MQL e propostas: base, plataforma e total unificado.
+- Exemplos explícitos de pares de campos e correspondência fictícia de IDs.
+- Inclusão de 11 expressões das cadeias, duas já presentes na seleção unificada.
+- Explicação dos vínculos inativos utilizados pelas medidas e dos limites de deduplicação.
+
 ## 0.1.0 — 2026-10-19
 
 - Estrutura do case de Growth Analytics.

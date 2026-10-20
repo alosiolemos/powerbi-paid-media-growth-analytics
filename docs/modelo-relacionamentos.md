@@ -40,6 +40,21 @@ Nem todo nível de uma plataforma equivale ao nível de mesmo nome em outra. No 
 
 IDs de plataformas distintas compartilham dimensões. A necessidade de desambiguação e a unicidade dessas chaves devem ser conferidas nos dados; o inventário não prova ausência de colisões.
 
+## Exemplos de vínculos entre campos
+
+| Campo do contato/negócio | Campo de destino | Estado encontrado |
+| --- | --- | --- |
+| hs_Contados_First[ID Facebook Campanha_V2] | tab.Campanhas[id] | Inativo |
+| hs_Contados_First[ID Google Campanha_V2] | tab.Campanhas[id] | Inativo |
+| hs_Contados_First[ID Linkedin Grupos de Campanha_V2] | tab.Campanhas[id] | Inativo |
+| hs_Negócios_Contatos[contact.id] | hs_Contados_First[vid] | Inativo |
+
+As relações de campanha são utilizadas pelas medidas de cada plataforma com USERELATIONSHIP. A medida-base de propostas usa também a relação entre contato e negócio.
+
+Por exemplo, uma chave fictícia camp_meta_a recuperada no contato encontra camp_meta_a na dimensão de campanhas. A relação estabelece o caminho possível; a medida escolhe como esse caminho participa do cálculo.
+
+Veja [as cadeias completas de MQL e propostas](unificacao-medidas.md), com código e exemplo de correspondência de IDs.
+
 ## Por que as colunas V2 importam
 
 As colunas calculadas reconstroem os IDs utilizáveis nos relacionamentos. Sem chaves coerentes entre CRM e mídia, o filtro de campanha não alcançaria os contatos conforme a análise pretendida.

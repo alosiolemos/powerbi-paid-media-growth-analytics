@@ -65,6 +65,7 @@ Consulte [contexto e evidências](docs/contexto-resultados.md) para detalhes de 
 - [Integrações, paginação e BigQuery](docs/integracoes.md)
 - [Colunas calculadas: chaves, plataforma e levantada de mão](docs/colunas-calculadas.md)
 - [Indicadores e regras de interpretação](docs/indicadores.md)
+- [Unificação: da medida-base ao total de MQL e propostas](docs/unificacao-medidas.md)
 - [Código DAX de medidas selecionadas](dax/medidas-selecionadas.dax)
 - [Exemplos adaptados de colunas DAX](dax/colunas-demonstrativas.dax)
 - [Exemplos Power Query e demonstração local](power-query/README.md)
