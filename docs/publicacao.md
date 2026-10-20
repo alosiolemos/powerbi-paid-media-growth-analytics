@@ -2,7 +2,7 @@
 
 ## Incluído
 
-- Contexto do desafio e contribuição descrita pelo autor.
+- Contexto do desafio e minha contribuição no projeto.
 - Fontes identificadas e arquitetura lógica.
 - Complexidade dos relacionamentos e inventário de 43 vínculos sem calendários automáticos.
 - Tratamento de dados, UTMs e recuperação de chaves.
