@@ -1,4 +1,3 @@
-<img width="1385" height="792" alt="01-visao-geral" src="https://github.com/user-attachments/assets/bdf75eed-6249-47e3-95b6-fb896494d800" /># Capturas do case
 
 As imagens originais não foram copiadas para o repositório. Há marca, nomes de campanha, identificadores de anúncio/campanha e valores comerciais nas referências recebidas.
 
