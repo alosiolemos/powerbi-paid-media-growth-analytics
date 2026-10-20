@@ -10,7 +10,7 @@ O trabalho não consistiu apenas em conectar quatro fontes. Era necessário conc
 - Uma campanha, um grupo, um criativo e uma palavra-chave pertencem a níveis distintos.
 - Datas e valores chegavam em representações que exigiam conversão.
 
-Segundo o autor, sem essa estrutura o marketing precisava verificar manualmente se manifestações de interesse haviam se desdobrado em contratos. O painel organizou regras e vínculos para apoiar essa leitura.
+Antes dessa estrutura, o marketing precisava verificar manualmente se manifestações de interesse haviam se desdobrado em contratos. No painel, organizei regras e vínculos para apoiar essa leitura.
 
 ## UTM, URL e ID são coisas diferentes
 
