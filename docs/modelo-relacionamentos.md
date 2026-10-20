@@ -91,4 +91,4 @@ No projeto foram encontradas medidas comerciais com DISTINCTCOUNT do negócio e 
 
 O número de linhas no modelo não é o argumento central. O trabalho está em conciliar níveis de mídia, recuperar chaves, definir papéis temporais e sustentar leituras do investimento ao negócio com regras explícitas.
 
-A captura do modelo fornecida pelo autor foi usada como referência visual. Diagramas simplificados tornam a explicação legível; o PBIP completo continua reservado.
+Utilizei uma captura do meu modelo como referência visual. Diagramas simplificados tornam a explicação legível; o PBIP completo continua reservado.
