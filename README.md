@@ -57,6 +57,16 @@ Os CPLs aparecem nas capturas do meu painel, com os períodos identificados a pa
 
 Consulte [contexto e evidências](docs/contexto-resultados.md) para detalhes de ICP, evolução e limites de comparação. Não foi isolado um efeito causal do painel.
 
+## Análises históricas e evolução das decisões
+
+Além da integração e da modelagem do painel, desenvolvi análises de campanhas, qualidade das levantadas de mão, palavras-chave, anúncios e distribuição de investimento. Reuni três apresentações para documentar essa evolução:
+
+- [2023 — Estruturação de mídia paga](docs/analises-historicas/2023-estruturacao-midia-paga.pdf)
+- [2024 — Revisão de mídia paga](docs/analises-historicas/2024-revisao-midia-paga.pdf)
+- [2025 — Revisão OpenCX](docs/analises-historicas/2025-06-revisao-opencx.pdf)
+
+Consulte o [guia das análises históricas](docs/analises-historicas/README.md) para entender os períodos, os diagnósticos e as recomendações. Os materiais usam recortes distintos: menor investimento total não deve ser apresentado como economia anual comparável sem conciliar os períodos, e as mudanças de resultado não foram atribuídas exclusivamente ao painel.
+
 ## Explore o case
 
 - [O desafio de qualidade, UTMs e correções](docs/qualidade-rastreabilidade.md)
@@ -75,7 +85,7 @@ Consulte [contexto e evidências](docs/contexto-resultados.md) para detalhes de 
 
 Este foi um dos projetos mais desafiadores da minha trajetória. Aprendi a utilizar BigQuery, organizei dados históricos, integrei plataformas e reconstruí chaves e regras para reduzir a necessidade de conferência manual pelo marketing.
 
-O painel foi descontinuado em 2025 em função de uma fusão, conforme seu relato. Não foi medido nesta edição o número de horas poupadas ou o ganho de acurácia.
+O painel foi descontinuado em 2025 em função de uma fusão. Não foi medido nesta edição o número de horas poupadas ou o ganho de acurácia.
 
 ## Escopo da publicação
 
