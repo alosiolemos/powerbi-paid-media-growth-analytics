@@ -28,6 +28,12 @@ flowchart LR
 
 O desenho resume a arquitetura lógica, sem representar todas as direções de filtro ou afirmar atribuição causal.
 
+## Telas
+
+Capturas do painel desenvolvido, disponibilizadas para apresentar a experiência visual do projeto.
+
+<img width="1385" height="792" alt="01-visao-geral" src="https://github.com/user-attachments/assets/fa80a455-e9ed-4766-9ca9-e5e2fe594282" />
+
 ## O que foi construído
 
 | Frente | Entrega |
